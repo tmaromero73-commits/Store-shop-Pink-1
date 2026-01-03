@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="https://vellaperfumeria.com/wp-content/uploads/2024/06/vellaperfumeralogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vellaperfumeria - Tu esencia, tu belleza</title>
+    <meta name="description" content="Tienda online de cosmética y wellness. Distribuidores oficiales de Oriflame. Envíos gratis +35€." />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-primary': '#f472b6', // Rosa Claro Suave (No tan fucsia)
+                        'brand-secondary': '#fdf2f8', // Fondo rosa muy pálido
+                        'brand-glass': 'rgba(255, 241, 242, 0.8)',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+<script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.33.0",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3"
+  }
+}
+</script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>
