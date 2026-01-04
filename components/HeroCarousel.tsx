@@ -8,17 +8,31 @@ interface HeroCarouselProps {
 
 const slides = [
     {
-        imageUrl: 'https://media-cdn.oriflame.com/contentImage?externalMediaId=78093358-84b4-48bc-b818-814071e28cf5&name=2x1_TheOne_Split_970x450&inputFormat=jpg',
-        title: 'Solo Online - Catálogo 1',
-        subtitle: 'Maquillaje THE ONE con descuentos de hasta el 50%',
-        buttonText: 'COMPRAR AHORA',
+        id: 'eclat-homme',
+        imageUrl: 'https://media-cdn.oriflame.com/contentImage?externalMediaId=7db636e0-258e-4914-9214-411a0937a85e&name=2x1_EclatHomme_Split_970x450&inputFormat=jpg',
+        title: 'Eclat Homme Premium',
+        subtitle: 'La esencia de la sofisticación parisina para él',
+        buttonText: 'VER FRAGANCIA',
+        view: 'products' as View,
+        customStyles: {
+            background: 'radial-gradient(circle at center, #1a365d 0%, #0c1a2c 100%)',
+            overlay: 'url("https://www.transparenttextures.com/patterns/gold-dust.png")'
+        }
+    },
+    {
+        id: 'duologi',
+        imageUrl: 'https://media-cdn.oriflame.com/contentImage?externalMediaId=04052011-859a-4122-8356-0775d7870404&name=2x1_Duologi_Split_970x450&inputFormat=jpg',
+        title: 'Cuidado Capilar Duologi',
+        subtitle: 'Tratamientos personalizados inspirados en el cuidado facial',
+        buttonText: 'VER DUOLOGI',
         view: 'products' as View,
     },
     {
-        imageUrl: 'https://media-cdn.oriflame.com/contentImage?externalMediaId=62bf98fd-8dcd-4996-bd59-22cf7c4b47fe&name=2x1_OnColour_Split_970x450&inputFormat=jpg',
-        title: 'OnColour Style',
-        subtitle: 'Color vibrante para tu día a día al mejor precio',
-        buttonText: 'VER COLECCIÓN',
+        id: 'makeup-2026',
+        imageUrl: 'https://media-cdn.oriflame.com/contentImage?externalMediaId=78093358-84b4-48bc-b818-814071e28cf5&name=2x1_TheOne_Split_970x450&inputFormat=jpg',
+        title: 'Tendencias Estocolmo 2026',
+        subtitle: 'Maquillaje profesional THE ONE',
+        buttonText: 'VER MAQUILLAJE',
         view: 'products' as View,
     }
 ];
@@ -36,25 +50,29 @@ const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
     }, [nextSlide]);
     
     return (
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-             <div className="w-full h-[60vh] max-h-[500px] m-auto relative group rounded-[3rem] overflow-hidden shadow-2xl bg-black border border-gray-100">
+        <div className="container mx-auto px-6 md:px-12">
+             <div className="w-full h-[60vh] md:h-[70vh] max-h-[700px] relative group rounded-[4rem] overflow-hidden shadow-2xl bg-black">
                 {slides.map((slide, index) => (
                     <div
-                        key={index}
+                        key={slide.id}
                         className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${index === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+                        style={{ background: slide.customStyles?.background }}
                     >
+                        {slide.customStyles?.overlay && (
+                            <div className="absolute inset-0 opacity-40 mix-blend-screen pointer-events-none" style={{ backgroundImage: slide.customStyles.overlay }}></div>
+                        )}
                         <img 
                             src={slide.imageUrl} 
                             alt={slide.title}
-                            className="w-full h-full object-cover opacity-80"
+                            className="w-full h-full object-cover opacity-60"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-center justify-center">
-                            <div className="text-center text-white p-6 max-w-2xl">
+                        <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="text-center text-white px-12 max-w-3xl">
                                 <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter mb-4 drop-shadow-2xl">{slide.title}</h2>
-                                <p className="text-lg md:text-xl font-medium opacity-90 mb-10">{slide.subtitle}</p>
+                                <p className="text-lg md:text-xl font-medium mb-10 opacity-90 italic">{slide.subtitle}</p>
                                 <button
                                     onClick={() => onNavigate(slide.view)}
-                                    className="bg-pink-200 text-black font-black py-5 px-12 rounded-full shadow-2xl hover:scale-105 active:scale-95 transition-all text-xs uppercase tracking-[0.3em]"
+                                    className="bg-[#FBCFE8] text-black font-black py-5 px-14 rounded-full shadow-2xl hover:scale-105 active:scale-95 transition-all text-[11px] uppercase tracking-[0.4em]"
                                 >
                                     {slide.buttonText}
                                 </button>
@@ -63,12 +81,12 @@ const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
                     </div>
                 ))}
                 
-                <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex space-x-4 z-20">
+                <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex space-x-6 z-20">
                     {slides.map((_, index) => (
                         <button
                             key={index}
                             onClick={() => setCurrentIndex(index)}
-                            className={`h-1.5 rounded-full transition-all duration-300 ${index === currentIndex ? 'bg-pink-300 w-12' : 'bg-white/30 w-4'}`}
+                            className={`h-1.5 rounded-full transition-all duration-300 ${index === currentIndex ? 'bg-[#FBCFE8] w-12' : 'bg-white/30 w-4'}`}
                         />
                     ))}
                 </div>

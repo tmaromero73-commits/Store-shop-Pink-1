@@ -1,5 +1,4 @@
 
-
 // Variant types, used in Product
 export interface VariantOption {
     value: string;
@@ -25,15 +24,12 @@ export interface Product {
     stock: number;
     category: 'perfume' | 'hair' | 'makeup' | 'skincare' | 'personal-care' | 'men' | 'wellness' | 'accessories';
     subCategory?: 'Giordani Gold' | 'THE ONE' | 'OnColour';
-    productType?: 'Base' | 'Corrector' | 'Máscara' | 'Colorete y Bronceador' | 'Labial' | 'Accesorio de Maquillaje' | 'Cremas BB y CC';
-    // Fix: Added 'BESTSELLER' to allowed tags to resolve the type mismatch in products.ts
     tag?: 'NOVEDAD' | 'SET' | 'OFERTA' | 'BESTSELLER';
-    statusLabel?: string;
+    beautyPoints?: number;
+    isShippingSaver?: boolean;
     rating?: number;
     reviewCount?: number;
     variants?: ProductVariants;
-    beautyPoints?: number;
-    isShippingSaver?: boolean;
 }
 
 // Cart item type
@@ -45,4 +41,4 @@ export interface CartItem {
 }
 
 // App view type
-export type View = 'home' | 'products' | 'productDetail' | 'ofertas' | 'ia' | 'catalog' | 'about' | 'contact' | 'blog' | 'blogPost' | 'checkout' | 'gift-wrapping';
+export type View = 'home' | 'products' | 'productDetail' | 'ofertas' | 'ia' | 'catalog' | 'blog' | 'blogPost' | 'checkout';
