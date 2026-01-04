@@ -1,4 +1,5 @@
 
+
 import React, { Component, useState, useEffect, useCallback, type ErrorInfo, type ReactNode } from 'react';
 // Types
 import type { View, Product, CartItem } from './components/types';
@@ -34,17 +35,12 @@ interface ErrorBoundaryState {
     error: Error | null;
 }
 
-// Fix: Explicitly extending React.Component and using React.PropsWithChildren pattern if needed,
-// but here extending with the provided props interface. This ensures 'this.props' is correctly typed.
-class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
+// Fix: Extending 'Component' directly from the import to ensure 'props' and 'state' are correctly typed and recognized by the TypeScript compiler.
+class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
     public state: ErrorBoundaryState = {
         hasError: false,
         error: null
     };
-
-    constructor(props: ErrorBoundaryProps) {
-        super(props);
-    }
 
     static getDerivedStateFromError(error: Error): ErrorBoundaryState {
         return { hasError: true, error };

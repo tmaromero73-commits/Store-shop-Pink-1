@@ -39,81 +39,84 @@ const Header: React.FC<{
 
     const menuSections = [
         { 
-            title: 'Maquillaje Total', 
+            title: 'MAQUILLAJE', 
             links: [
                 { name: 'Colección THE ONE', key: 'the-one' },
                 { name: 'OnColour Style', key: 'makeup' },
-                { name: 'Giordani Gold', key: 'makeup' },
-                { name: 'Todo Maquillaje', key: 'makeup' }
+                { name: 'Giordani Gold', key: 'makeup' }
             ] 
         },
         { 
-            title: 'Tratamiento Duologi', 
+            title: 'CABELLO', 
             links: [
-                { name: 'Champús Reparadores', key: 'hair' },
-                { name: 'Acondicionadores Ricos', key: 'hair' },
-                { name: 'Sérums & Selladores', key: 'hair' },
-                { name: 'Todo Duologi', key: 'hair' }
+                { name: 'Duologi Tratamiento', key: 'hair' },
+                { name: 'Eleo Aceites', key: 'hair' }
             ] 
         },
         { 
-            title: 'Baño & Cuerpo', 
+            title: 'CUERPO', 
             links: [
-                { name: 'Magnolia (Jabonería)', key: 'personal-care' },
-                { name: 'Milk & Honey Gold', key: 'personal-care' },
-                { name: 'Wellness & Salud', key: 'wellness' },
-                { name: 'Higiene Íntima', key: 'personal-care' }
+                { name: 'Magnolia', key: 'personal-care' },
+                { name: 'Milk & Honey Gold', key: 'personal-care' }
             ] 
         },
         { 
-            title: 'Especial 2026', 
+            title: 'FRAGANCIAS', 
             links: [
-                { name: 'Magnolia Ofertas', key: 'ofertas' },
-                { name: 'Novedades Enero', key: 'products' },
-                { name: 'Lotes de Regalo', key: 'gift-wrapping' },
-                { name: 'Última Oportunidad', key: 'ofertas' }
+                { name: 'Eclat Homme', key: 'perfume' },
+                { name: 'Giordani Gold', key: 'perfume' }
             ] 
         }
     ];
+
+    const logoUrl = "https://vellaperfumeria.com/wp-content/uploads/2024/06/vellaperfumeralogo.png";
 
     return (
         <header 
             className={`w-full z-[100] transition-all duration-300 ${isScrolled ? 'fixed top-0' : 'relative'}`}
             onMouseLeave={() => setShowMegaMenu(false)}
         >
-            {/* 1. TOP ANNOUNCEMENT BAR */}
+            {/* 1. PROMOCIONES Y TELÉFONO */}
             <div className="w-full bg-pink-50 py-2 px-6 flex justify-between items-center border-b border-pink-100">
-                <div className="text-[10px] font-black text-pink-500 uppercase tracking-[0.3em]">
-                    ✨ BIENVENIDOS A VELLAPERFUMERIA • CATÁLOGO 1 - 2026
+                <div className="flex items-center gap-6">
+                    <div className="text-[10px] font-black text-pink-600 uppercase tracking-[0.3em]">
+                        Envío Gratis +35€ • Catálogo 1
+                    </div>
+                    <div className="hidden md:block text-[10px] font-black text-gray-700 uppercase tracking-[0.2em] border-l border-pink-200 pl-6">
+                        Teléfono: 661 202 616
+                    </div>
                 </div>
-                <div className="flex gap-4 text-[10px] font-bold text-gray-400">
+                <div className="flex gap-4 text-[10px] font-bold text-gray-400 uppercase">
                     <button onClick={() => onCurrencyChange('EUR')} className={currency === 'EUR' ? 'text-pink-600' : ''}>EUR</button>
                     <button onClick={() => onCurrencyChange('USD')} className={currency === 'USD' ? 'text-pink-600' : ''}>USD</button>
                 </div>
             </div>
 
-            {/* 2. LOGO SECTION (Blanco Puro) */}
-            <div className={`w-full bg-white transition-all duration-500 flex justify-center items-center ${isScrolled ? 'h-0 opacity-0 overflow-hidden' : 'py-10'}`}>
+            {/* 2. LOGO CENTRADO */}
+            <div className={`w-full bg-white transition-all duration-500 flex justify-center items-center overflow-hidden ${isScrolled ? 'h-0 opacity-0' : 'py-12 h-auto opacity-100'}`}>
                 <button onClick={() => onNavigate('home')} className="hover:scale-105 transition-transform duration-500">
                     <img 
-                        src="https://vellaperfumeria.com/wp-content/uploads/2024/06/vellaperfumeralogo.png" 
+                        src={logoUrl} 
                         alt="Vellaperfumeria" 
-                        className="h-28 md:h-36 w-auto" 
+                        className="h-32 md:h-40 w-auto" 
                     />
                 </button>
             </div>
 
-            {/* 3. FULL WIDTH BLACK NAVIGATION */}
+            {/* 3. NAVEGACIÓN NEGRA */}
             <nav className="w-full bg-black shadow-2xl">
                 <div className="max-w-full mx-auto px-6 md:px-12 h-16 flex items-center justify-between">
-                    {/* Buscador */}
-                    <div className="flex-1 flex items-center">
+                    <div className="flex-1 flex items-center gap-4">
+                        {isScrolled && (
+                            <button onClick={() => onNavigate('home')} className="animate-fade-in">
+                                <img src={logoUrl} alt="Logo" className="h-10 w-auto invert brightness-0" />
+                            </button>
+                        )}
                         <button className="text-white/60 hover:text-white transition-colors p-2">
                             <SearchIcon />
                         </button>
                     </div>
 
-                    {/* Enlaces Principales */}
                     <div className="flex items-center space-x-12">
                         <button onClick={() => onNavigate('home')} className="text-[11px] font-black uppercase tracking-[0.4em] text-white hover:text-pink-300 transition-colors">Inicio</button>
                         
@@ -121,14 +124,13 @@ const Header: React.FC<{
                             onMouseEnter={() => setShowMegaMenu(true)}
                             className={`text-[11px] font-black uppercase tracking-[0.4em] flex items-center gap-2 transition-colors ${showMegaMenu ? 'text-pink-300' : 'text-white hover:text-pink-300'}`}
                         >
-                            Catálogo 2026 <span className="text-[7px]">▼</span>
+                            Catálogo <span className="text-[7px]">▼</span>
                         </button>
 
                         <button onClick={() => onNavigate('ofertas')} className="text-[11px] font-black uppercase tracking-[0.4em] text-pink-400 hover:brightness-125 transition-all">Ofertas</button>
                         <button onClick={() => onNavigate('ia')} className="text-[11px] font-black uppercase tracking-[0.4em] text-white hover:text-pink-300 transition-colors">Belleza IA</button>
                     </div>
 
-                    {/* Acciones Usuario */}
                     <div className="flex-1 flex items-center justify-end gap-6">
                         <button className="text-white/60 hover:text-white hidden md:block transition-colors"><UserIcon /></button>
                         <button onClick={onCartClick} className="relative text-white hover:text-pink-200 transition-colors">
@@ -143,17 +145,17 @@ const Header: React.FC<{
                 </div>
             </nav>
 
-            {/* 4. MEGA MENU DROPDOWN (Fondo Negro con Efecto Cristal) */}
+            {/* 4. MEGA MENU */}
             {showMegaMenu && (
                 <div 
-                    className="absolute top-full left-0 w-full bg-black/95 backdrop-blur-xl text-white border-t border-white/5 shadow-[0_40px_80px_rgba(0,0,0,0.8)] animate-mega-menu z-[110]"
+                    className="absolute top-full left-0 w-full bg-black/98 backdrop-blur-2xl text-white border-t border-white/5 shadow-2xl animate-mega-menu z-[110]"
                     onMouseEnter={() => setShowMegaMenu(true)}
                     onMouseLeave={() => setShowMegaMenu(false)}
                 >
                     <div className="max-w-screen-xl mx-auto px-12 py-16 grid grid-cols-1 md:grid-cols-4 gap-12">
                         {menuSections.map((section, sIdx) => (
                             <div key={sIdx} className="space-y-6">
-                                <h3 className="text-pink-400 text-[10px] font-black uppercase tracking-[0.4em] border-b border-white/10 pb-4">
+                                <h3 className="text-pink-400 text-[10px] font-black uppercase tracking-[0.5em] border-b border-white/10 pb-4">
                                     {section.title}
                                 </h3>
                                 <ul className="space-y-4">
@@ -164,7 +166,7 @@ const Header: React.FC<{
                                                     onNavigate('products', link.key); 
                                                     setShowMegaMenu(false); 
                                                 }}
-                                                className="text-[13px] text-gray-400 hover:text-white transition-all flex items-center group/item"
+                                                className="text-[13px] text-gray-400 hover:text-white transition-all flex items-center group/item font-bold"
                                             >
                                                 <span className="w-0 h-[1px] bg-pink-500 mr-0 transition-all group-hover/item:w-4 group-hover/item:mr-2"></span>
                                                 {link.name}
@@ -175,18 +177,14 @@ const Header: React.FC<{
                             </div>
                         ))}
                     </div>
-                    <div className="w-full py-6 bg-white/5 text-center text-[9px] font-bold text-gray-500 uppercase tracking-[0.6em] border-t border-white/5">
-                        Vellaperfumeria • Oficial Brand Partner Oriflame 2026
-                    </div>
                 </div>
             )}
 
             <style>{`
-                @keyframes megaMenuIn { 
-                    from { opacity: 0; transform: translateY(-15px); } 
-                    to { opacity: 1; transform: translateY(0); } 
-                }
-                .animate-mega-menu { animation: megaMenuIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+                @keyframes megaMenuIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+                .animate-mega-menu { animation: megaMenuIn 0.3s ease-out forwards; }
+                .animate-fade-in { animation: fadeIn 0.4s ease-out; }
+                @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
             `}</style>
         </header>
     );

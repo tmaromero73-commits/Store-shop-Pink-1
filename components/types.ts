@@ -1,4 +1,5 @@
 
+
 // Variant types, used in Product
 export interface VariantOption {
     value: string;
@@ -25,7 +26,8 @@ export interface Product {
     category: 'perfume' | 'hair' | 'makeup' | 'skincare' | 'personal-care' | 'men' | 'wellness' | 'accessories';
     subCategory?: 'Giordani Gold' | 'THE ONE' | 'OnColour';
     productType?: 'Base' | 'Corrector' | 'Máscara' | 'Colorete y Bronceador' | 'Labial' | 'Accesorio de Maquillaje' | 'Cremas BB y CC';
-    tag?: 'NOVEDAD' | 'SET' | 'OFERTA';
+    // Fix: Added 'BESTSELLER' to allowed tags to resolve the type mismatch in products.ts
+    tag?: 'NOVEDAD' | 'SET' | 'OFERTA' | 'BESTSELLER';
     statusLabel?: string;
     rating?: number;
     reviewCount?: number;

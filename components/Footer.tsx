@@ -30,13 +30,7 @@ const VisaIcon = () => (
     <svg className="w-10 h-6 opacity-80 hover:opacity-100 transition-all" viewBox="0 0 38 24" fill="none" xmlns="http://www.w3.org/2000/svg">
        <rect width="38" height="24" rx="2" fill="white"/>
        <path d="M15.5 15.5L13.5 4.5H11.5L9 10.5L7.5 6.5L7 4.5H5L8.5 15.5H11L13 9.5L14.5 4.5H15.5V15.5Z" fill="#1A1F71"/>
-       <path d="M20.5 15.5L22.5 4.5H20.5L19.5 9L18.5 4.5H16.5L18.5 15.5H20.5Z" fill="#1A1F71"/>
-       <path d="M26.5 15.5L28.5 4.5H26.5L25 8.5L23.5 4.5H21.5L23.5 15.5H26.5Z" fill="#1A1F71"/>
-       <path d="M32.5 4.5H29.5L28.5 9L27.5 4.5H25.5L28.5 15.5H30.5L34.5 4.5H32.5Z" fill="#1A1F71"/>
        <path d="M11 15.5L13 4.5H15L13 15.5H11Z" fill="#1A1F71"/>
-       <path d="M25.7 6.8C25.2 6.6 24.6 6.5 24 6.5C22.6 6.5 21.5 7.2 21.5 8.6C21.5 9.6 22.4 10.2 23.1 10.5C23.8 10.8 24 11 24 11.3C24 11.7 23.6 11.9 23.1 11.9C22.5 11.9 22 11.8 21.6 11.6L21.3 12.8C21.8 13 22.5 13.1 23.1 13.1C24.7 13.1 25.8 12.3 25.8 10.9C25.8 9.8 25.1 9.2 24.3 8.9C23.6 8.6 23.3 8.3 23.3 8C23.3 7.7 23.7 7.5 24.1 7.5C24.6 7.5 25 7.6 25.4 7.8L25.7 6.8Z" fill="#1A1F71"/>
-       <path d="M30.6 6.5H28.9L28 11.5L28.9 6.5Z" fill="#1A1F71"/>
-       <path d="M32.9 6.5L32.5 8.6C32.3 7.9 32.1 7.2 31.8 6.5H30.2L30.6 8.6L30.2 11.5L31.1 6.5Z" fill="#1A1F71"/>
     </svg>
 );
 
@@ -45,23 +39,15 @@ const MastercardIcon = () => (
         <rect width="38" height="24" rx="2" fill="white"/>
         <circle cx="13" cy="12" r="7" fill="#EB001B"/>
         <circle cx="25" cy="12" r="7" fill="#F79E1B"/>
-        <path d="M19 16.4C20.3 15.4 21.2 13.8 21.2 12C21.2 10.2 20.3 8.6 19 7.6C17.7 8.6 16.8 10.2 16.8 12C16.8 13.8 17.7 15.4 19 16.4Z" fill="#FF5F00"/>
     </svg>
 );
 
 const PayPalIcon = () => (
     <svg className="w-10 h-6 opacity-80 hover:opacity-100 transition-all" viewBox="0 0 38 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="38" height="24" rx="2" fill="white"/>
-        <path d="M26.5 7.5L23.5 7.5L22.5 13.5L26.5 7.5Z" fill="#003087"/>
-        <path d="M22.5 13.5L20.5 13.5L21.5 7.5L24.5 7.5L22.5 13.5Z" fill="#003087"/>
         <path d="M14.5 7.5C15.5 7.5 16.5 8 16.5 9.5C16.5 10.5 16 11.5 15 11.5H13.5L14.5 7.5Z" fill="#003087"/>
-        <path d="M10.5 7.5H13.5L12.5 13.5H9.5L10.5 7.5Z" fill="#003087"/>
-        <path d="M13 12.5H11.5L12 9.5L13 12.5Z" fill="#009CDE"/>
-        <path d="M16 10.5C16 11.5 15.5 12.5 14.5 12.5H13L13.5 9.5H15C15.5 9.5 16 9.8 16 10.5Z" fill="#009CDE"/>
-        <path d="M20 7.5L18 13.5H16.5L18.5 7.5H20Z" fill="#009CDE"/>
     </svg>
 );
-
 
 interface FooterProps {
     onNavigate: (view: View, payload?: any) => void;
@@ -85,7 +71,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 text-center md:text-left">
                     <div className="sm:col-span-2 lg:col-span-1 flex flex-col items-center text-center md:items-start md:text-left">
                          <button onClick={() => onNavigate('home')} className="inline-block hover:opacity-80 transition-opacity mb-4 cursor-pointer">
-                            <img src="https://i0.wp.com/vellaperfumeria.com/wp-content/uploads/2025/06/1000003724-removebg-preview.png" alt="Vellaperfumeria Logo" className="h-24 w-auto" />
+                            <img src="https://vellaperfumeria.com/wp-content/uploads/2024/06/vellaperfumeralogo.png" alt="Vellaperfumeria Logo" className="h-24 w-auto" />
                         </button>
                         <h2 className="text-2xl font-serif font-bold tracking-tight text-white mb-2">Vellaperfumeria</h2>
                         <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
@@ -108,7 +94,6 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                            <FooterLink onClick={() => onNavigate('products', 'all')}>Tienda Online</FooterLink>
                            <FooterLink onClick={() => onNavigate('products', 'skincare')}>Cuidado Facial</FooterLink>
                            <FooterLink onClick={() => onNavigate('products', 'makeup')}>Maquillaje</FooterLink>
-                           <FooterLink onClick={() => onNavigate('products', 'perfume')}>Fragancias</FooterLink>
                            <FooterLink onClick={() => onNavigate('ofertas')}>Ofertas Especiales</FooterLink>
                         </ul>
                     </div>
@@ -120,17 +105,15 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                             <FooterLink onClick={() => onNavigate('contact')}>Contacto</FooterLink>
                             <FooterLink onClick={() => onNavigate('blog')}>Blog de Belleza</FooterLink>
                             <FooterLink onClick={() => onNavigate('catalog')}>Catálogo Digital</FooterLink>
-                            <li className="text-gray-500 text-xs pt-2">Política de Privacidad</li>
                         </ul>
                     </div>
 
                      <div className="flex flex-col items-center md:items-start">
                         <h3 className="text-xs font-bold tracking-[0.2em] uppercase mb-6 text-white border-b border-gray-700 pb-2 inline-block">Síguenos</h3>
                         <div className="flex justify-center md:justify-start space-x-6 text-white mb-8">
-                           <span className="cursor-pointer hover:text-pink-400 transition-all duration-300 transform hover:scale-110" aria-label="Threads"><ThreadsIcon /></span>
-                           <span className="cursor-pointer hover:text-pink-400 transition-all duration-300 transform hover:scale-110" aria-label="Instagram"><InstagramIcon /></span>
-                           <span className="cursor-pointer hover:text-pink-400 transition-all duration-300 transform hover:scale-110" aria-label="Facebook"><FacebookIcon /></span>
-                           <span className="cursor-pointer hover:text-pink-400 transition-all duration-300 transform hover:scale-110" aria-label="WhatsApp"><WhatsAppIcon /></span>
+                           <a href="https://instagram.com" target="_blank" className="cursor-pointer hover:text-pink-400 transition-all transform hover:scale-110"><InstagramIcon /></a>
+                           <a href="https://facebook.com" target="_blank" className="cursor-pointer hover:text-pink-400 transition-all transform hover:scale-110"><FacebookIcon /></a>
+                           <a href="https://wa.me/34661202616" target="_blank" className="cursor-pointer hover:text-pink-400 transition-all transform hover:scale-110"><WhatsAppIcon /></a>
                         </div>
                         
                         <h3 className="text-xs font-bold tracking-[0.2em] uppercase mb-4 text-white">Métodos de Pago</h3>
