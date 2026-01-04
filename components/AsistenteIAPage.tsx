@@ -1,7 +1,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 // Fix: Always use import {GoogleGenAI} from "@google/genai"; as per guidelines
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenAI, GenerateContentResponse } from "@google/genai";
 
 interface Message {
     role: 'user' | 'model';
@@ -71,8 +71,9 @@ const AsistenteIAPage: React.FC = () => {
             const responseStream = await chat.sendMessageStream({ message: messageText });
 
             for await (const chunk of responseStream) {
-                // Fix: Accessing .text as a property directly as per GenerateContentResponse guidelines
-                const chunkText = chunk.text;
+                // Fix: Accessing .text as a property directly after casting chunk to GenerateContentResponse
+                const c = chunk as GenerateContentResponse;
+                const chunkText = c.text;
                 if (chunkText) {
                     setMessages(prev => {
                         const newMessages = [...prev];

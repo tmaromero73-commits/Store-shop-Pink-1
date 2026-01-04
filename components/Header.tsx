@@ -1,8 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
-import type { View, Product } from './types';
+import type { View } from './types';
 import type { Currency } from './currency';
-import { allProducts } from './products';
 
 const SearchIcon = () => (
     <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -17,14 +16,8 @@ const UserIcon = () => (
 );
 
 const CartIcon = () => (
-    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-    </svg>
-);
-
-const HeartIcon = () => (
-    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M4.318 6.318a4.5 4.5 0 016.364 0L12 7.636l1.318-1.318a4.5 4.5 0 116.364 6.364L12 20.364l-7.682-7.682a4.5 4.5 0 010-6.364z" />
     </svg>
 );
 
@@ -38,97 +31,110 @@ const Header: React.FC<{
     const [showMegaMenu, setShowMegaMenu] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
 
-    const orchidColor = "#E29CD2";
-    const lightOrchid = "#F8E7F4"; // Versión más clara para botones/hovers
-
-    const featuredProduct = allProducts.find(p => p.id === 48082) || allProducts[0];
-
     useEffect(() => {
-        const handleScroll = () => {
-            setIsScrolled(window.scrollY > 20);
-        };
+        const handleScroll = () => setIsScrolled(window.scrollY > 80);
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const categories = [
-        { id: 'skincare', label: 'Facial', links: ['Limpiadores', 'Hidratantes', 'Sérums', 'Ojos'] },
-        { id: 'makeup', label: 'Maquillaje', links: ['Rostro', 'Ojos', 'Labios', 'Uñas'] },
-        { id: 'perfume', label: 'Perfumes', links: ['Mujer', 'Hombre', 'Sets'] },
-        { id: 'wellness', label: 'Bienestar', links: ['Nutrición', 'Suplementos', 'Control Peso'] },
-        { id: 'hair', label: 'Cabello', links: ['Champús', 'Mascarillas', 'Aceites'] }
+    const menuSections = [
+        { 
+            title: 'Maquillaje Total', 
+            links: [
+                { name: 'Colección THE ONE', key: 'the-one' },
+                { name: 'OnColour Style', key: 'makeup' },
+                { name: 'Giordani Gold', key: 'makeup' },
+                { name: 'Todo Maquillaje', key: 'makeup' }
+            ] 
+        },
+        { 
+            title: 'Tratamiento Duologi', 
+            links: [
+                { name: 'Champús Reparadores', key: 'hair' },
+                { name: 'Acondicionadores Ricos', key: 'hair' },
+                { name: 'Sérums & Selladores', key: 'hair' },
+                { name: 'Todo Duologi', key: 'hair' }
+            ] 
+        },
+        { 
+            title: 'Baño & Cuerpo', 
+            links: [
+                { name: 'Magnolia (Jabonería)', key: 'personal-care' },
+                { name: 'Milk & Honey Gold', key: 'personal-care' },
+                { name: 'Wellness & Salud', key: 'wellness' },
+                { name: 'Higiene Íntima', key: 'personal-care' }
+            ] 
+        },
+        { 
+            title: 'Especial 2026', 
+            links: [
+                { name: 'Magnolia Ofertas', key: 'ofertas' },
+                { name: 'Novedades Enero', key: 'products' },
+                { name: 'Lotes de Regalo', key: 'gift-wrapping' },
+                { name: 'Última Oportunidad', key: 'ofertas' }
+            ] 
+        }
     ];
 
     return (
         <header 
-            className={`w-full z-[100] transition-all duration-500 bg-white ${isScrolled ? 'fixed top-0 shadow-2xl' : 'relative'}`}
+            className={`w-full z-[100] transition-all duration-300 ${isScrolled ? 'fixed top-0' : 'relative'}`}
             onMouseLeave={() => setShowMegaMenu(false)}
         >
-            {/* 1. BARRA SUPERIOR (Rosa Orquídea) */}
-            <div 
-                style={{ backgroundColor: orchidColor }} 
-                className="w-full text-white py-1.5 px-4 text-[9px] font-black uppercase tracking-[0.4em] text-center"
-            >
-                ENVÍO GRATIS DESDE 35€ • TU ESENCIA, TU BELLEZA 🌸
+            {/* 1. TOP ANNOUNCEMENT BAR */}
+            <div className="w-full bg-pink-50 py-2 px-6 flex justify-between items-center border-b border-pink-100">
+                <div className="text-[10px] font-black text-pink-500 uppercase tracking-[0.3em]">
+                    ✨ BIENVENIDOS A VELLAPERFUMERIA • CATÁLOGO 1 - 2026
+                </div>
+                <div className="flex gap-4 text-[10px] font-bold text-gray-400">
+                    <button onClick={() => onCurrencyChange('EUR')} className={currency === 'EUR' ? 'text-pink-600' : ''}>EUR</button>
+                    <button onClick={() => onCurrencyChange('USD')} className={currency === 'USD' ? 'text-pink-600' : ''}>USD</button>
+                </div>
             </div>
 
-            {/* 2. AREA DE LOGOTIPO (Centrado y Grande) */}
-            <div className={`transition-all duration-500 flex flex-col items-center justify-center ${isScrolled ? 'h-0 opacity-0 overflow-hidden' : 'py-8 md:py-10'}`}>
-                <button onClick={() => onNavigate('home')} className="relative group px-4">
+            {/* 2. LOGO SECTION (Blanco Puro) */}
+            <div className={`w-full bg-white transition-all duration-500 flex justify-center items-center ${isScrolled ? 'h-0 opacity-0 overflow-hidden' : 'py-10'}`}>
+                <button onClick={() => onNavigate('home')} className="hover:scale-105 transition-transform duration-500">
                     <img 
                         src="https://vellaperfumeria.com/wp-content/uploads/2024/06/vellaperfumeralogo.png" 
                         alt="Vellaperfumeria" 
-                        className="h-32 md:h-40 w-auto object-contain transition-transform duration-500 group-hover:scale-105" 
+                        className="h-28 md:h-36 w-auto" 
                     />
-                    <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-24 h-[1px] bg-gray-100"></div>
                 </button>
             </div>
 
-            {/* 3. BARRA DE NAVEGACIÓN SLIM (Fondo Negro) */}
-            <nav className={`w-full bg-black transition-all duration-300 relative z-[110] ${isScrolled ? 'py-1' : 'py-0'}`}>
-                <div className="max-w-screen-xl mx-auto flex items-center justify-between md:justify-center px-4 relative">
-                    
-                    {/* Iconos Izquierda (Solo visibles al hacer scroll) */}
-                    <div className={`absolute left-6 flex items-center gap-4 transition-opacity duration-300 ${isScrolled ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-                        <button className="text-white hover:text-[#E29CD2] transition-colors"><SearchIcon /></button>
-                        <button className="text-white hover:text-[#E29CD2] transition-colors hidden sm:block"><HeartIcon /></button>
+            {/* 3. FULL WIDTH BLACK NAVIGATION */}
+            <nav className="w-full bg-black shadow-2xl">
+                <div className="max-w-full mx-auto px-6 md:px-12 h-16 flex items-center justify-between">
+                    {/* Buscador */}
+                    <div className="flex-1 flex items-center">
+                        <button className="text-white/60 hover:text-white transition-colors p-2">
+                            <SearchIcon />
+                        </button>
                     </div>
 
-                    {/* Logo Pequeño Izquierda (Solo Scroll) */}
-                    {isScrolled && (
-                        <div className="absolute left-1/2 -translate-x-1/2 md:left-24 md:translate-x-0">
-                            <button onClick={() => onNavigate('home')}>
-                                <img src="https://vellaperfumeria.com/wp-content/uploads/2024/06/vellaperfumeralogo.png" alt="Mini Logo" className="h-8 md:h-10 invert brightness-0" />
-                            </button>
-                        </div>
-                    )}
-
-                    {/* Menú Principal */}
-                    <ul className="flex items-center justify-center space-x-1 md:space-x-4">
-                        <li><button onClick={() => onNavigate('home')} className="px-3 md:px-6 py-3 text-[10px] font-black uppercase tracking-[0.2em] text-white hover:text-[#E29CD2] transition-colors">Inicio</button></li>
+                    {/* Enlaces Principales */}
+                    <div className="flex items-center space-x-12">
+                        <button onClick={() => onNavigate('home')} className="text-[11px] font-black uppercase tracking-[0.4em] text-white hover:text-pink-300 transition-colors">Inicio</button>
                         
-                        <li onMouseEnter={() => setShowMegaMenu(true)} className="relative">
-                            <button className={`px-3 md:px-6 py-3 text-[10px] font-black uppercase tracking-[0.2em] flex items-center gap-2 transition-colors ${showMegaMenu ? 'text-[#E29CD2]' : 'text-white'}`}>
-                                Colecciones <span className="text-[7px]">▼</span>
-                            </button>
-                        </li>
+                        <button 
+                            onMouseEnter={() => setShowMegaMenu(true)}
+                            className={`text-[11px] font-black uppercase tracking-[0.4em] flex items-center gap-2 transition-colors ${showMegaMenu ? 'text-pink-300' : 'text-white hover:text-pink-300'}`}
+                        >
+                            Catálogo 2026 <span className="text-[7px]">▼</span>
+                        </button>
 
-                        <li><button onClick={() => onNavigate('ofertas')} style={{ color: orchidColor }} className="px-3 md:px-6 py-3 text-[10px] font-black uppercase tracking-[0.2em] hover:brightness-125 transition-all">Rebajas</button></li>
-                        <li className="hidden sm:block"><button onClick={() => onNavigate('catalog')} className="px-3 md:px-6 py-3 text-[10px] font-black uppercase tracking-[0.2em] text-white hover:text-[#E29CD2] transition-colors">Catálogo</button></li>
-                        <li><button onClick={() => onNavigate('ia')} className="px-3 md:px-6 py-3 text-[10px] font-black uppercase tracking-[0.2em] text-white hover:text-[#E29CD2] transition-colors flex items-center gap-1">
-                            <span style={{ color: orchidColor }}>✨</span> IA
-                        </button></li>
-                    </ul>
+                        <button onClick={() => onNavigate('ofertas')} className="text-[11px] font-black uppercase tracking-[0.4em] text-pink-400 hover:brightness-125 transition-all">Ofertas</button>
+                        <button onClick={() => onNavigate('ia')} className="text-[11px] font-black uppercase tracking-[0.4em] text-white hover:text-pink-300 transition-colors">Belleza IA</button>
+                    </div>
 
-                    {/* Acceso Rápido Derecha */}
-                    <div className="absolute right-6 flex items-center gap-4">
-                         <button onClick={onCartClick} className="relative text-white hover:text-[#E29CD2] transition-colors flex items-center gap-2 group p-2">
+                    {/* Acciones Usuario */}
+                    <div className="flex-1 flex items-center justify-end gap-6">
+                        <button className="text-white/60 hover:text-white hidden md:block transition-colors"><UserIcon /></button>
+                        <button onClick={onCartClick} className="relative text-white hover:text-pink-200 transition-colors">
                             <CartIcon />
                             {cartCount > 0 && (
-                                <span 
-                                    style={{ backgroundColor: orchidColor }}
-                                    className="absolute -top-0.5 -right-0.5 text-white text-[8px] font-black w-4 h-4 rounded-full flex items-center justify-center border border-black shadow-sm"
-                                >
+                                <span className="absolute -top-1.5 -right-2 bg-pink-500 text-white text-[8px] font-black w-4 h-4 rounded-full flex items-center justify-center border border-black shadow-lg">
                                     {cartCount}
                                 </span>
                             )}
@@ -137,99 +143,50 @@ const Header: React.FC<{
                 </div>
             </nav>
 
-            {/* 4. MEGA MENU (Fondo Negro - Slim Style) */}
+            {/* 4. MEGA MENU DROPDOWN (Fondo Negro con Efecto Cristal) */}
             {showMegaMenu && (
                 <div 
-                    className="absolute top-full left-0 w-full bg-black text-white shadow-2xl z-[105] border-t border-white/5 animate-mega-reveal overflow-hidden"
+                    className="absolute top-full left-0 w-full bg-black/95 backdrop-blur-xl text-white border-t border-white/5 shadow-[0_40px_80px_rgba(0,0,0,0.8)] animate-mega-menu z-[110]"
                     onMouseEnter={() => setShowMegaMenu(true)}
                     onMouseLeave={() => setShowMegaMenu(false)}
                 >
-                    <div className="max-w-screen-xl mx-auto px-10 py-12 relative z-10">
-                        <div className="grid grid-cols-12 gap-10">
-                            
-                            {/* Promo Image (4 columns) */}
-                            <div className="col-span-4 border-r border-white/5 pr-10">
-                                <div className="relative group/ad cursor-pointer overflow-hidden rounded-xl aspect-video" onClick={() => onNavigate('productDetail', featuredProduct)}>
-                                    <img 
-                                        src={featuredProduct.imageUrl} 
-                                        alt="Promo" 
-                                        className="w-full h-full object-contain bg-white/5 transition-transform duration-700 group-hover/ad:scale-105" 
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
-                                    <div className="absolute bottom-4 left-4">
-                                        <p style={{ color: orchidColor }} className="text-[9px] font-bold uppercase tracking-widest mb-1">Elegancia Diaria</p>
-                                        <h4 className="text-sm font-serif italic text-white">Descubre Royal Velvet</h4>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Categories (8 columns) */}
-                            <div className="col-span-8">
-                                <div className="grid grid-cols-4 gap-8">
-                                    {categories.map((cat) => (
-                                        <div key={cat.id} className="space-y-4">
-                                            <h3 style={{ color: orchidColor }} className="text-[10px] font-black uppercase tracking-[0.3em] mb-4">
-                                                {cat.label}
-                                            </h3>
-                                            <ul className="space-y-2">
-                                                {cat.links.map(label => (
-                                                    <li key={label}>
-                                                        <button 
-                                                            onClick={() => { onNavigate('products', cat.id); setShowMegaMenu(false); }} 
-                                                            className="text-[12px] text-gray-400 hover:text-white transition-colors flex items-center group/link text-left"
-                                                        >
-                                                            <span style={{ backgroundColor: orchidColor }} className="w-0 h-[1px] mr-0 transition-all group-hover/link:w-2 group-hover/link:mr-2"></span>
-                                                            {label}
-                                                        </button>
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
+                    <div className="max-w-screen-xl mx-auto px-12 py-16 grid grid-cols-1 md:grid-cols-4 gap-12">
+                        {menuSections.map((section, sIdx) => (
+                            <div key={sIdx} className="space-y-6">
+                                <h3 className="text-pink-400 text-[10px] font-black uppercase tracking-[0.4em] border-b border-white/10 pb-4">
+                                    {section.title}
+                                </h3>
+                                <ul className="space-y-4">
+                                    {section.links.map((link, bIdx) => (
+                                        <li key={bIdx}>
+                                            <button 
+                                                onClick={() => { 
+                                                    onNavigate('products', link.key); 
+                                                    setShowMegaMenu(false); 
+                                                }}
+                                                className="text-[13px] text-gray-400 hover:text-white transition-all flex items-center group/item"
+                                            >
+                                                <span className="w-0 h-[1px] bg-pink-500 mr-0 transition-all group-hover/item:w-4 group-hover/item:mr-2"></span>
+                                                {link.name}
+                                            </button>
+                                        </li>
                                     ))}
-                                </div>
-                                
-                                <div className="mt-10 pt-6 border-t border-white/5 flex justify-between items-center">
-                                    <p className="text-[10px] text-gray-500 uppercase tracking-widest">Atención VIP: +34 661 20 26 16</p>
-                                    <button 
-                                        onClick={() => onNavigate('gift-wrapping')}
-                                        style={{ backgroundColor: lightOrchid, color: '#333' }}
-                                        className="px-6 py-2 rounded-full text-[9px] font-black uppercase tracking-widest hover:brightness-105 transition-all shadow-md"
-                                    >
-                                        Servicio de Regalo 🎁
-                                    </button>
-                                </div>
+                                </ul>
                             </div>
-
-                        </div>
+                        ))}
+                    </div>
+                    <div className="w-full py-6 bg-white/5 text-center text-[9px] font-bold text-gray-500 uppercase tracking-[0.6em] border-t border-white/5">
+                        Vellaperfumeria • Oficial Brand Partner Oriflame 2026
                     </div>
                 </div>
             )}
 
             <style>{`
-                @keyframes megaReveal {
-                    from { opacity: 0; transform: translateY(-5px); }
-                    to { opacity: 1; transform: translateY(0); }
+                @keyframes megaMenuIn { 
+                    from { opacity: 0; transform: translateY(-15px); } 
+                    to { opacity: 1; transform: translateY(0); } 
                 }
-                .animate-mega-reveal { 
-                    animation: megaReveal 0.3s ease-out forwards; 
-                }
-                nav ul li button {
-                    position: relative;
-                }
-                nav ul li button::after {
-                    content: '';
-                    position: absolute;
-                    bottom: 0;
-                    left: 50%;
-                    width: 0;
-                    height: 1px;
-                    background-color: ${orchidColor};
-                    transition: all 0.3s ease;
-                    transform: translateX(-50%);
-                }
-                nav ul li button:hover::after {
-                    width: 60%;
-                }
+                .animate-mega-menu { animation: megaMenuIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
             `}</style>
         </header>
     );

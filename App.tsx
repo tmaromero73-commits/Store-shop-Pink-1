@@ -1,5 +1,4 @@
 
-
 import React, { Component, useState, useEffect, useCallback, type ErrorInfo, type ReactNode } from 'react';
 // Types
 import type { View, Product, CartItem } from './components/types';
@@ -35,14 +34,16 @@ interface ErrorBoundaryState {
     error: Error | null;
 }
 
-// Fix: Extending the Component class using the named import from 'react' to ensure that state and props are correctly inherited and accessible within the class.
-class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
+// Fix: Explicitly extending React.Component and using React.PropsWithChildren pattern if needed,
+// but here extending with the provided props interface. This ensures 'this.props' is correctly typed.
+class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
+    public state: ErrorBoundaryState = {
+        hasError: false,
+        error: null
+    };
+
     constructor(props: ErrorBoundaryProps) {
         super(props);
-        this.state = {
-            hasError: false,
-            error: null
-        };
     }
 
     static getDerivedStateFromError(error: Error): ErrorBoundaryState {
@@ -54,7 +55,6 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
     }
 
     render() {
-        // Fix: accessing state via this.state (line 58)
         if (this.state.hasError) {
             return (
                 <div className="flex flex-col items-center justify-center min-h-screen bg-pink-50 text-center p-4">
@@ -62,7 +62,6 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
                         <h1 className="text-2xl font-bold text-pink-600 mb-2">¡Vaya! Algo salió mal</h1>
                         <p className="text-gray-600 mb-6 text-sm">Hemos tenido un problema técnico cargando la tienda.</p>
                         <div className="bg-gray-100 p-3 rounded text-xs text-left text-gray-700 font-mono mb-6 overflow-auto max-h-32">
-                            {/* Fix: accessing state.error via this.state (line 66) */}
                             {this.state.error?.message || 'Error desconocido'}
                         </div>
                         <button 
@@ -75,7 +74,6 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
                 </div>
             );
         }
-        // Fix: accessing props via this.props (line 79)
         return this.props.children;
     }
 }

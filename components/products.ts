@@ -2,71 +2,149 @@
 import type { Product } from './types';
 
 export const allProducts: Product[] = [
+    // --- LÍNEA DUOLOGI (CABELLO GRIS/TRATAMIENTO) ---
     {
-        id: 49135,
-        name: "Cepillo de Dientes para Niños Dureza Suave Optifresh",
-        brand: "Optifresh",
-        price: 2.15,
-        regularPrice: 5.00,
-        imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F49135%2F49135_1.png",
-        description: "DESCRIPCIÓN: Cepillo de cerdas suaves diseñado específicamente para las encías sensibles de los niños pequeños. Su mango ergonómico permite un agarre seguro tanto para el niño como para el adulto que supervisa. BENEFICIOS: Cerdas ultra-suaves que no dañan el esmalte joven. Cabezal pequeño para llegar a todos los rincones de la boca infantil. MODO DE EMPLEO: Cepillar después de cada comida bajo supervisión. INGREDIENTES: Mango de polipropileno reciclable, filamentos de nylon suave de alta calidad libre de BPA.",
-        stock: 50,
-        category: "personal-care",
-        tag: "NOVEDAD",
-        rating: 5,
-        reviewCount: 12
-    },
-    {
-        id: 44952,
-        name: "Pasta de Dientes Máxima Frescura Optifresh",
-        brand: "Optifresh",
-        price: 7.70,
-        imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F44952%2F44952_1.png",
-        description: "DESCRIPCIÓN: Pasta de dientes con tecnología Protect Shield que ofrece 12 horas de protección contra la placa, las caries y el sarro. Sabor a menta intensa para un aliento fresco duradero. BENEFICIOS: Blanqueamiento suave, aliento fresco inmediato, fortalece el esmalte. INGREDIENTES: Sorbitol, Aqua, Hydrated Silica, Sodium Lauryl Sulfate, Aroma, Cellulose Gum, Sodium Fluoride (1450 ppm), Sodium Saccharin, Limonene, CI 42090.",
-        stock: 150,
-        category: "personal-care",
-        rating: 4.8,
-        reviewCount: 1350
-    },
-    {
-        id: 48970,
-        name: "Caja de Regalo Festive Oriflame Premium",
-        brand: "Oriflame",
-        price: 7.70,
-        regularPrice: 10.00,
-        imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F48970%2F48970_1.png",
-        description: "DESCRIPCIÓN: Caja rígida de lujo con acabado mate y detalles en pan de oro. Diseñada para contener sets completos de cuidado facial o fragancias. MEDIDAS: 22x18x8cm. MATERIAL: Cartón reforzado de fuentes sostenibles con certificado FSC. PRESENTACIÓN: Incluye papel de seda color crema y cinta de raso personalizada con el logo de Oriflame.",
-        stock: 50,
-        category: "accessories",
-        tag: "SET",
-        rating: 5,
-        reviewCount: 20
-    },
-    {
-        id: 48115,
-        name: "Crema de Día Reafirmante SPF 20 Royal Velvet",
-        brand: "Royal Velvet",
-        price: 19.24,
-        regularPrice: 42.00,
-        imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F48115%2F48115_1.png",
-        description: "DESCRIPCIÓN: Tratamiento facial de día con infusión de Flor de Iris Negra. Mejora la elasticidad de la piel y reduce visiblemente la apariencia de finas líneas y arrugas. BENEFICIOS: Efecto lifting inmediato, hidratación 24h, protección SPF 20 contra rayos UV. INGREDIENTES: Aqua, Ethylhexyl Methoxycinnamate, Glycerin, Butyl Methoxydibenzoylmethane, Iris Florentina Root Extract, Sodium Hyaluronate, Panthenol, Tocopheryl Acetate (Vitamina E).",
-        stock: 30,
-        category: "skincare",
+        id: 44955,
+        name: "Champú Reparación Intensa Duologi",
+        brand: "Duologi",
+        price: 9.99,
+        regularPrice: 15.00,
+        imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F44955%2F44955_1.png",
+        description: "Champú de tratamiento avanzado para cabello seco o dañado. Limpia profundamente mientras fortalece la fibra capilar con proteínas vegetales.",
+        stock: 45,
+        category: "hair",
         tag: "NOVEDAD",
         rating: 4.9,
-        reviewCount: 156
+        reviewCount: 128
     },
     {
-        id: 48082,
-        name: "Lote Giordani Gold Essenza Supreme",
-        brand: "Giordani Gold",
-        price: 66.61,
-        imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F48082%2F48082_1.png",
-        description: "DESCRIPCIÓN: El epítome del lujo. Este lote contiene el Perfume Essenza Supreme de 50ml y la Loción Corporal Perfumada de 200ml. Fragancia floral amaderada con notas de flor de azahar, mandarina y sándalo. PRESENTACIÓN: Se envía en estuche de terciopelo negro con bordados dorados. INGREDIENTES PERFUME: Alcohol Denat, Parfum, Benzyl Salicylate, Limonene, Linalool, Citral.",
-        stock: 10,
-        category: "perfume",
-        tag: "SET",
+        id: 44962,
+        name: "Acondicionador Rico Duologi",
+        brand: "Duologi",
+        price: 9.99,
+        regularPrice: 15.00,
+        imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F44962%2F44962_1.png",
+        description: "Acondicionador cremoso para nutrición extrema. Suaviza instantáneamente y previene las puntas abiertas.",
+        stock: 38,
+        category: "hair",
         rating: 5,
-        reviewCount: 1
+        reviewCount: 92
+    },
+    {
+        id: 44964,
+        name: "Sérum Sellador de Puntas Duologi",
+        brand: "Duologi",
+        price: 12.99,
+        regularPrice: 18.00,
+        imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F44964%2F44964_1.png",
+        description: "Sérum invisible que repara y sella las puntas. Protege contra el calor de planchas y secadores.",
+        stock: 25,
+        category: "hair",
+        tag: "OFERTA",
+        rating: 4.8,
+        reviewCount: 56
+    },
+    {
+        id: 44967,
+        name: "Tónico Revitalizante Capilar Duologi",
+        brand: "Duologi",
+        price: 14.99,
+        regularPrice: 22.00,
+        imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F44967%2F44967_1.png",
+        description: "Tratamiento para el cuero cabelludo que estimula el crecimiento y reduce la caída del cabello.",
+        stock: 15,
+        category: "hair",
+        rating: 4.7,
+        reviewCount: 63
+    },
+
+    // --- MAGNOLIA (EDICIÓN LIMITADA) ---
+    {
+        id: 42686,
+        name: "Jabón en Barra Luminous Magnolia",
+        brand: "Magnolia",
+        price: 2.49,
+        regularPrice: 5.00,
+        imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F42686%2F42686_1.png",
+        description: "Jabón perfumado con delicado extracto de magnolia. Limpia y suaviza la piel con una fragancia primaveral única.",
+        stock: 100,
+        category: "personal-care",
+        tag: "OFERTA",
+        rating: 4.9,
+        reviewCount: 310
+    },
+
+    // --- MILK & HONEY GOLD ---
+    {
+        id: 31602,
+        name: "Crema de Manos y Cuerpo Milk & Honey Gold",
+        brand: "Milk & Honey",
+        price: 7.99,
+        regularPrice: 14.00,
+        imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F31602%2F31602_1.png",
+        description: "Fórmula icónica con extractos orgánicos de leche y miel. Nutrición intensa 24 horas para pieles secas.",
+        stock: 80,
+        category: "personal-care",
+        rating: 5,
+        reviewCount: 940
+    },
+    {
+        id: 31604,
+        name: "Jabón Líquido Nutritivo Milk & Honey",
+        brand: "Milk & Honey",
+        price: 6.99,
+        regularPrice: 11.00,
+        imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F31604%2F31604_1.png",
+        description: "Limpiadora cremosa que deja las manos suaves e hidratadas con un aroma reconfortante.",
+        stock: 60,
+        category: "personal-care",
+        rating: 4.8,
+        reviewCount: 150
+    },
+
+    // --- MAQUILLAJE THE ONE ---
+    {
+        id: 40657,
+        name: "Base de Maquillaje Everlasting Sync THE ONE",
+        brand: "THE ONE",
+        price: 11.99,
+        regularPrice: 21.00,
+        imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F40657%2F40657_1.png",
+        description: "Tecnología inteligente que adapta tu maquillaje a la humedad ambiental. Larga duración y acabado natural.",
+        stock: 50,
+        category: "makeup",
+        tag: "OFERTA",
+        rating: 4.8,
+        reviewCount: 512
+    },
+    {
+        id: 42123,
+        name: "Máscara de Pestañas 5 en 1 Wonder Lash THE ONE",
+        brand: "THE ONE",
+        price: 8.99,
+        regularPrice: 16.00,
+        imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F42123%2F42123_1.png",
+        description: "Volumen, longitud, curvatura, cuidado y definición en una sola pasada. El bestseller de Oriflame.",
+        stock: 120,
+        category: "makeup",
+        tag: "OFERTA",
+        rating: 5,
+        reviewCount: 2300
+    },
+
+    // --- MAQUILLAJE ONCOLOUR ---
+    {
+        id: 38733,
+        name: "Barra de Labios Creamy OnColour",
+        brand: "OnColour",
+        price: 3.99,
+        regularPrice: 8.00,
+        imageUrl: "https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F38733%2F38733_1.png",
+        description: "Color vibrante con una textura cremosa y pigmentos puros. El maquillaje esencial al mejor precio.",
+        stock: 200,
+        category: "makeup",
+        tag: "OFERTA",
+        rating: 4.5,
+        reviewCount: 425
     }
 ];

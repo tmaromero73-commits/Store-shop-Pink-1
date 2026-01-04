@@ -8,13 +8,13 @@ import { ProductCard } from './ProductCard';
 
 // Icons for Action Bar
 const FilterIcon = () => (
-    <svg className="w-6 h-6" focusable="false" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
+    <svg className="h-6 w-6" focusable="false" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
         <path d="M9.437 7a2 2 0 0 1-3.874 0H4.5a.5.5 0 0 1 0-1h1.063a2 2 0 0 1 3.874 0H19.5a.5.5 0 0 1 0 1zM6.5 6.5a1 1 0 1 0 2 0 1 1 0 0 0-2 0m11.937 5H19.5a.5.5 0 0 1 0 1h-1.063a2 2 0 0 1-3.874 0H4.5a.5.5 0 0 1 0-1h10.063a2 2 0 0 1 3.874 0m-.937.5a1 1 0 1 0-2 0 1 1 0 0 0 2 0m-6.063 5H19.5a.5.5 0 0 1 0 1h-8.063a2 2 0 0 1-3.874 0H4.5a.5.5 0 0 1 0-1h3.063a2 2 0 0 1 3.874 0m-.937.5a1 1 0 1 0-2 0 1 1 0 0 0 2 0"></path>
     </svg>
 );
 
 const SortIcon = () => (
-    <svg className="w-6 h-6" focusable="false" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
+    <svg className="h-6 w-6" focusable="false" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
         <path d="M3.5 6a.5.5 0 0 0 0 1h10a.5.5 0 0 0 0-1zm0 5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1zm0 5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1zM19 6.5a.5.5 0 0 0-1 0v9.793l-2.146-2.147a.5.5 0 0 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L19 16.293z"></path>
     </svg>
 );
@@ -23,7 +23,8 @@ type MixedItem =
   | { type: 'product', id: number }
   | { type: 'banner-image', image: string, title: string, buttonText: string, link: string, colSpan?: number, textColor?: string }
   | { type: 'banner-text', title: string, buttonText: string, link: string }
-  | { type: 'banner-video', src: string, link?: string };
+  | { type: 'banner-video', src: string, link?: string }
+  | { type: 'banner-blue-gold', title: string, subtitle: string, buttonText: string, link: string };
 
 const ProductList: React.FC<{
     onNavigate: (view: View, payload?: any) => void;
@@ -51,13 +52,11 @@ const ProductList: React.FC<{
         { type: 'product', id: 49135 },
         { type: 'product', id: 48082 },
         {
-            type: 'banner-image',
-            image: "https://media-cdn.oriflame.com/contentImage?externalMediaId=96119198-b8ab-4de1-a77e-0d923a0753de&name=2_2x1_GiftWrapping_Split_970x450&inputFormat=jpg",
-            title: "Convierte tu regalo de belleza en un momento de alegría",
-            buttonText: "LEER MÁS SOBRE REGALOS",
-            link: "gift-wrapping",
-            colSpan: 2,
-            textColor: "text-gray-900"
+            type: 'banner-blue-gold',
+            title: "EDICIÓN DE LUJO",
+            subtitle: "Fragancias Premium con Lotes Exclusivos",
+            buttonText: "VER COLECCIÓN ORO",
+            link: "ofertas"
         },
         { type: 'product', id: 47847 },
         { type: 'product', id: 48115 },
@@ -164,7 +163,33 @@ const ProductList: React.FC<{
 
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
                     {mixedContent.map((item, index) => {
-                        if (item.type === 'banner-image') {
+                        if (item.type === 'banner-blue-gold') {
+                            return (
+                                <div 
+                                    key={`banner-bg-${index}`} 
+                                    className="relative flex flex-col justify-center items-center text-center p-8 bg-blue-950 col-span-2 md:col-span-2 h-full min-h-[400px] animate-fade-in rounded-3xl overflow-hidden shadow-2xl border border-blue-900 group cursor-pointer"
+                                    onClick={() => handleClickLink(item.link)}
+                                >
+                                    {/* Golden Dots Pattern with Animation */}
+                                    <div className="absolute inset-0 opacity-40 pointer-events-none bg-dots-gold animate-shimmer"></div>
+                                    <div className="absolute inset-0 bg-gradient-to-br from-blue-950 via-blue-900 to-indigo-950 opacity-90"></div>
+                                    
+                                    <div className="relative z-10 flex flex-col items-center">
+                                        <div className="w-12 h-[2px] bg-amber-400 mb-6 scale-x-0 group-hover:scale-x-100 transition-transform duration-700"></div>
+                                        <h3 className="text-amber-400 text-xs font-black uppercase tracking-[0.5em] mb-4">
+                                            {item.title}
+                                        </h3>
+                                        <h2 className="text-3xl md:text-5xl font-serif italic text-white mb-8 max-w-md leading-tight">
+                                            {item.subtitle}
+                                        </h2>
+                                        <button className="bg-amber-400 text-blue-950 px-10 py-4 rounded-full font-black text-[10px] uppercase tracking-widest hover:bg-white hover:text-black transition-all shadow-xl shadow-amber-400/20 active:scale-95">
+                                            {item.buttonText}
+                                        </button>
+                                        <div className="w-12 h-[2px] bg-amber-400 mt-6 scale-x-0 group-hover:scale-x-100 transition-transform duration-700"></div>
+                                    </div>
+                                </div>
+                            );
+                        } else if (item.type === 'banner-image') {
                             return (
                                 <div 
                                     key={`banner-img-${index}`} 
@@ -271,6 +296,20 @@ const ProductList: React.FC<{
                 .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
                 @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
                 .animate-fade-in { animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+                
+                .bg-dots-gold {
+                    background-image: radial-gradient(#d4af37 1.5px, transparent 1.5px);
+                    background-size: 25px 25px;
+                }
+                
+                @keyframes shimmer {
+                    0% { opacity: 0.3; transform: scale(1); }
+                    50% { opacity: 0.6; transform: scale(1.05); }
+                    100% { opacity: 0.3; transform: scale(1); }
+                }
+                .animate-shimmer {
+                    animation: shimmer 5s infinite ease-in-out;
+                }
             `}</style>
         </div>
     );
